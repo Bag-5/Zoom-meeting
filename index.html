@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zoom Meeting</title>
+  <link rel="icon" href="https://zoom.us/favicon.ico" type="image/x-icon"/>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: #2d8cff;
+    }
+
+    p {
+      color: #333;
+    }
+
+    .btn {
+      background-color: #2d8cff;
+      color: white;
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #226ac4;
+    }
+
+    .message, .blackout {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: black;
+      color: white;
+      font-size: 24px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="main">
+    <h1>Join Zoom Class</h1>
+    <p>The lecturer is waiting. Please join now to avoid being marked absent.</p>
+    <button class="btn" onclick="startPrank()">Join Class</button>
+  </div>
+
+  <div class="message" id="loading">Connecting to Zoom class...</div>
+  <div class="message" id="hacked">You’ve been hacked! Zoom is not safe.</div>
+  <div class="blackout" id="blackout"></div>
+
+  <script>
+    function startPrank() {
+      document.getElementById('main').style.display = 'none';
+      document.getElementById('loading').style.display = 'flex';
+
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('hacked').style.display = 'flex';
+
+        setTimeout(() => {
+          document.getElementById('hacked').style.display = 'none';
+          document.getElementById('blackout').style.display = 'flex';
+        }, 2500);
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
